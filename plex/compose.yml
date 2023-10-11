@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC+2
+      - VERSION=docker
+    volumes:
+      - ./config:/config
+      - ../medias/tv:/tv
+      - ../medias/movies:/movies
+    ports:
+      - 32400:32400
+    restart: unless-stopped

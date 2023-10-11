@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  plex:
+    extends:
+      file: plex/compose.yml
+      service: plex
+    networks:
+      - local
+  portainer:
+    extends:
+      file: portainer/compose.yml
+      service: portainer
+    networks:
+      - local
+  netdata:
+    extends:
+      file: netdata/compose.yml
+      service: netdata
+    networks:
+      - local
+  pyload:
+    extends:
+      file: pyload/compose.yml
+      service: pyload-ng
+    networks:
+      - local
+
+networks:
+  local:
+
+volumes:
+    portainer_data:
+    netdataconfig:
+    netdatalib:
+    netdatacache:
+
+    
